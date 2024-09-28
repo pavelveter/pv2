@@ -7,22 +7,18 @@ import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import Markdown from "react-markdown";
-
 import { useState, useEffect } from "react";
-
 import Image from "next/image";
 import {
   RenderImageContext,
   RenderImageProps,
   RowsPhotoAlbum,
 } from "react-photo-album";
+import { UnstableSSR as SSR } from "react-photo-album/ssr";
 import "react-photo-album/rows.css";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-
 import { UnstableServerPhotoAlbum as ServerPhotoAlbum } from "react-photo-album/server";
-
-
 import { shuffledPhotos, aPhoto } from "@/data/photos";
 
 function renderNextImage(
@@ -49,7 +45,7 @@ function renderNextImage(
   );
 }
 
-const BLUR_FADE_DELAY = 0.03;
+const BLUR_FADE_DELAY = 0.04;
 
 export default function Page() {
 
@@ -70,13 +66,14 @@ export default function Page() {
 
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
+      {/* --- герой --- */}
       <section id="hero">
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
-                className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
+                className="text-5xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none"
                 yOffset={8}
                 text={`${DATA.hello}${DATA.name.split(" ")[0]} 📸`}
               />
@@ -95,6 +92,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+      {/* --- интро --- */}
       <section id="intro">
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
@@ -102,6 +100,7 @@ export default function Page() {
           </Markdown>
         </BlurFade>
       </section>
+      {/* --- фотки --- */}
       <section id="photos">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-2">
           <BlurFade delay={BLUR_FADE_DELAY * 8}>
@@ -117,13 +116,13 @@ export default function Page() {
             </div>
           </BlurFade>
         </div>
-
+        {/* --- меню --- */}
         <BlurFade delay={BLUR_FADE_DELAY * 10}>
           <div className="flex justify-center space-x-4 my-6">
             {Object.keys(shuffledPhotos).map((albumName) => (
               <button
                 key={albumName}
-                className={`px-4 py-2 rounded-md hover:bg-opacity-80 transition-colors ${
+                className={`px-4 py-2 rounded-md hover:bg-opacity-80 transition-colors fade-transition ${
                   photoState === albumName
                     ? "bg-foreground text-background"
                     : "bg-background text-foreground border border-foreground"
@@ -135,26 +134,33 @@ export default function Page() {
             ))}
           </div>
         </BlurFade>
-
+        {/* --- галерея --- */}
         <BlurFade delay={BLUR_FADE_DELAY * 14}>
           {isLoading ? (
             <p>Loading...</p>
           ) : (
-           
+            
+            // 384 х 256 – размер тамбнейлов
+           <SSR breakpoints={[256,384,1024,1920]}> 
             <RowsPhotoAlbum
+              componentsProps={(containerWidth) => ({
+              image: { loading: (containerWidth || 0) > 600 ? "eager" : "lazy" },
+              })}
               photos={currentPhotoAlbum}
               render={{ image: renderNextImage }}
               defaultContainerWidth={1200}
               onClick={({ index }) => setIndex(index)}
               sizes={{
-                size: "625px",
+                // мудацкий тейлскейл
+                size: "896px",
                 sizes: [
-                  { viewport: "(max-width: 625px)", size: "calc(100vw - 32px)" },
+                  { viewport: "(max-width: 896px)", size: "calc(100vw - 32px)" },
                 ],
               }}
-            />
+            /></SSR>
           )}
         </BlurFade>
+        {/* --- лайтбокс --- */}
         <Lightbox
           slides={currentPhotoAlbum}
           open={index >= 0}
@@ -162,6 +168,7 @@ export default function Page() {
           close={() => setIndex(-1)}
         />
       </section>
+      {/* --- кто учил --- */}
       <section id="who">
         <BlurFade delay={BLUR_FADE_DELAY * 20}>
           <Markdown className="prose max-w-full text-pretty font-sans text-sm text-muted-foreground dark:prose-invert">
@@ -169,6 +176,7 @@ export default function Page() {
           </Markdown>
         </BlurFade>
       </section>
+      {/* --- контакты --- */}
       <section id="contact">
         <div className="grid items-center justify-center gap-4 px-4 text-center md:px-6 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 18}>

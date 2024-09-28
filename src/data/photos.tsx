@@ -261,7 +261,7 @@ const originalPhotos: PhotoAlbum = {
       { src: "/club/993.jpg", width: 1920, height: 1281 },
      ],
    }
-     
+
 export const shuffledPhotos: PhotoAlbum = Object.fromEntries(
   Object.entries(originalPhotos).map(([key, value]) => [key, shuffleArray(value)])
 );
