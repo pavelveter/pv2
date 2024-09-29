@@ -262,6 +262,14 @@ const originalPhotos: PhotoAlbum = {
      ],
    }
 
+export const albums = {
+      food: "Еду",
+      corporative: "Мероприятия",
+      industrial: "Производства",
+      weddings: "Свадьбы",
+      clubs: "Клубы"
+    };
+
 export const shuffledPhotos: PhotoAlbum = Object.fromEntries(
   Object.entries(originalPhotos).map(([key, value]) => [key, shuffleArray(value)])
 );
