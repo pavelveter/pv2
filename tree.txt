@@ -1,0 +1,344 @@
+.
+├── Dockerfile
+├── LICENSE
+├── components.json
+├── docker-compose.yml
+├── next-env.d.ts
+├── next.config.mjs
+├── node_modules
+│   ├── @eslint
+│   │   ├── eslintrc -> ../.pnpm/@eslint+eslintrc@2.1.4/node_modules/@eslint/eslintrc
+│   │   └── js -> ../.pnpm/@eslint+js@8.57.0/node_modules/@eslint/js
+│   ├── @eslint-community
+│   │   ├── eslint-utils -> ../.pnpm/@eslint-community+eslint-utils@4.4.0_eslint@8.57.0/node_modules/@eslint-community/eslint-utils
+│   │   └── regexpp -> ../.pnpm/@eslint-community+regexpp@4.10.1/node_modules/@eslint-community/regexpp
+│   ├── @next
+│   │   └── eslint-plugin-next -> ../.pnpm/@next+eslint-plugin-next@14.2.4/node_modules/@next/eslint-plugin-next
+│   ├── @radix-ui
+│   │   ├── react-avatar -> ../.pnpm/@radix-ui+react-avatar@1.0.4_@types+react-dom@18.3.0_@types+react@18.3.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/@radix-ui/react-avatar
+│   │   ├── react-icons -> ../.pnpm/@radix-ui+react-icons@1.3.0_react@18.3.1/node_modules/@radix-ui/react-icons
+│   │   ├── react-separator -> ../.pnpm/@radix-ui+react-separator@1.1.0_@types+react-dom@18.3.0_@types+react@18.3.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/@radix-ui/react-separator
+│   │   ├── react-slot -> ../.pnpm/@radix-ui+react-slot@1.0.2_@types+react@18.3.3_react@18.3.1/node_modules/@radix-ui/react-slot
+│   │   └── react-tooltip -> ../.pnpm/@radix-ui+react-tooltip@1.0.7_@types+react-dom@18.3.0_@types+react@18.3.3_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/@radix-ui/react-tooltip
+│   ├── @rushstack
+│   │   └── eslint-patch -> ../.pnpm/@rushstack+eslint-patch@1.10.3/node_modules/@rushstack/eslint-patch
+│   ├── @tailwindcss
+│   │   └── typography -> ../.pnpm/@tailwindcss+typography@0.5.13_tailwindcss@3.4.4/node_modules/@tailwindcss/typography
+│   ├── @types
+│   │   ├── canvas-confetti -> ../.pnpm/@types+canvas-confetti@1.6.4/node_modules/@types/canvas-confetti
+│   │   ├── mdx -> ../.pnpm/@types+mdx@2.0.13/node_modules/@types/mdx
+│   │   ├── node -> ../.pnpm/@types+node@20.14.2/node_modules/@types/node
+│   │   ├── react -> ../.pnpm/@types+react@18.3.3/node_modules/@types/react
+│   │   └── react-dom -> ../.pnpm/@types+react-dom@18.3.0/node_modules/@types/react-dom
+│   ├── @typescript-eslint
+│   │   ├── parser -> ../.pnpm/@typescript-eslint+parser@7.2.0_eslint@8.57.0_typescript@5.4.5/node_modules/@typescript-eslint/parser
+│   │   ├── scope-manager -> ../.pnpm/@typescript-eslint+scope-manager@7.2.0/node_modules/@typescript-eslint/scope-manager
+│   │   ├── types -> ../.pnpm/@typescript-eslint+types@7.2.0/node_modules/@typescript-eslint/types
+│   │   ├── typescript-estree -> ../.pnpm/@typescript-eslint+typescript-estree@7.2.0_typescript@5.4.5/node_modules/@typescript-eslint/typescript-estree
+│   │   └── visitor-keys -> ../.pnpm/@typescript-eslint+visitor-keys@7.2.0/node_modules/@typescript-eslint/visitor-keys
+│   ├── canvas-confetti -> .pnpm/canvas-confetti@1.9.3/node_modules/canvas-confetti
+│   ├── class-variance-authority -> .pnpm/class-variance-authority@0.7.0/node_modules/class-variance-authority
+│   ├── clsx -> .pnpm/clsx@2.1.1/node_modules/clsx
+│   ├── eslint -> .pnpm/eslint@8.57.0/node_modules/eslint
+│   ├── eslint-config-next -> .pnpm/eslint-config-next@14.2.4_eslint@8.57.0_typescript@5.4.5/node_modules/eslint-config-next
+│   ├── eslint-import-resolver-node -> .pnpm/eslint-import-resolver-node@0.3.9/node_modules/eslint-import-resolver-node
+│   ├── eslint-import-resolver-typescript -> .pnpm/eslint-import-resolver-typescript@3.6.1_@typescript-eslint+parser@7.2.0_eslint@8.57.0_typescr_ogz5wqiu5tfxoa7htnll3dgwnu/node_modules/eslint-import-resolver-typescript
+│   ├── eslint-module-utils -> .pnpm/eslint-module-utils@2.8.1_@typescript-eslint+parser@7.2.0_eslint@8.57.0_typescript@5.4.5__esl_xgec66xlzmit3byeguflmvtie4/node_modules/eslint-module-utils
+│   ├── eslint-plugin-import -> .pnpm/eslint-plugin-import@2.29.1_@typescript-eslint+parser@7.2.0_eslint@8.57.0_typescript@5.4.5__e_mahnd73mxjfjajg52m7iw75kuy/node_modules/eslint-plugin-import
+│   ├── eslint-plugin-jsx-a11y -> .pnpm/eslint-plugin-jsx-a11y@6.8.0_eslint@8.57.0/node_modules/eslint-plugin-jsx-a11y
+│   ├── eslint-plugin-react -> .pnpm/eslint-plugin-react@7.34.2_eslint@8.57.0/node_modules/eslint-plugin-react
+│   ├── eslint-plugin-react-hooks -> .pnpm/eslint-plugin-react-hooks@4.6.2_eslint@8.57.0/node_modules/eslint-plugin-react-hooks
+│   ├── eslint-scope -> .pnpm/eslint-scope@7.2.2/node_modules/eslint-scope
+│   ├── eslint-visitor-keys -> .pnpm/eslint-visitor-keys@3.4.3/node_modules/eslint-visitor-keys
+│   ├── framer-motion -> .pnpm/framer-motion@11.2.10_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/framer-motion
+│   ├── gray-matter -> .pnpm/gray-matter@4.0.3/node_modules/gray-matter
+│   ├── lucide-react -> .pnpm/lucide-react@0.395.0_react@18.3.1/node_modules/lucide-react
+│   ├── next -> .pnpm/next@14.2.13_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next
+│   ├── next-themes -> .pnpm/next-themes@0.3.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/next-themes
+│   ├── postcss -> .pnpm/postcss@8.4.38/node_modules/postcss
+│   ├── react -> .pnpm/react@18.3.1/node_modules/react
+│   ├── react-dom -> .pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom
+│   ├── react-markdown -> .pnpm/react-markdown@9.0.1_@types+react@18.3.3_react@18.3.1/node_modules/react-markdown
+│   ├── react-photo-album -> .pnpm/react-photo-album@3.0.2_@types+react@18.3.3_react@18.3.1/node_modules/react-photo-album
+│   ├── rehype-pretty-code -> .pnpm/rehype-pretty-code@0.13.2_shiki@1.7.0/node_modules/rehype-pretty-code
+│   ├── rehype-stringify -> .pnpm/rehype-stringify@10.0.0/node_modules/rehype-stringify
+│   ├── remark-parse -> .pnpm/remark-parse@11.0.0/node_modules/remark-parse
+│   ├── remark-rehype -> .pnpm/remark-rehype@11.1.0/node_modules/remark-rehype
+│   ├── shiki -> .pnpm/shiki@1.7.0/node_modules/shiki
+│   ├── tailwind-merge -> .pnpm/tailwind-merge@2.3.0/node_modules/tailwind-merge
+│   ├── tailwindcss -> .pnpm/tailwindcss@3.4.4/node_modules/tailwindcss
+│   ├── tailwindcss-animate -> .pnpm/tailwindcss-animate@1.0.7_tailwindcss@3.4.4/node_modules/tailwindcss-animate
+│   ├── typescript -> .pnpm/typescript@5.4.5/node_modules/typescript
+│   ├── unified -> .pnpm/unified@11.0.4/node_modules/unified
+│   └── yet-another-react-lightbox -> .pnpm/yet-another-react-lightbox@3.21.6_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/yet-another-react-lightbox
+├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.mjs
+├── public
+│   ├── club
+│   │   ├── 017.jpg
+│   │   ├── 040.jpg
+│   │   ├── 061.jpg
+│   │   ├── 079.jpg
+│   │   ├── 085.jpg
+│   │   ├── 111.jpg
+│   │   ├── 127.jpg
+│   │   ├── 138.jpg
+│   │   ├── 156.jpg
+│   │   ├── 158.jpg
+│   │   ├── 168.jpg
+│   │   ├── 178.jpg
+│   │   ├── 188.jpg
+│   │   ├── 204.jpg
+│   │   ├── 206.jpg
+│   │   ├── 222.jpg
+│   │   ├── 229.jpg
+│   │   ├── 244.jpg
+│   │   ├── 245.jpg
+│   │   ├── 253.jpg
+│   │   ├── 263.jpg
+│   │   ├── 264.jpg
+│   │   ├── 266.jpg
+│   │   ├── 269.jpg
+│   │   ├── 272.jpg
+│   │   ├── 279.jpg
+│   │   ├── 302.jpg
+│   │   ├── 322.jpg
+│   │   ├── 347.jpg
+│   │   ├── 372.jpg
+│   │   ├── 378.jpg
+│   │   ├── 383.jpg
+│   │   ├── 392.jpg
+│   │   ├── 420.jpg
+│   │   ├── 438.jpg
+│   │   ├── 455.jpg
+│   │   ├── 474.jpg
+│   │   ├── 478.jpg
+│   │   ├── 490.jpg
+│   │   ├── 519.jpg
+│   │   ├── 543.jpg
+│   │   ├── 580.jpg
+│   │   ├── 592.jpg
+│   │   ├── 601.jpg
+│   │   ├── 606.jpg
+│   │   ├── 609.jpg
+│   │   ├── 635.jpg
+│   │   ├── 647.jpg
+│   │   ├── 694.jpg
+│   │   ├── 696.jpg
+│   │   ├── 697.jpg
+│   │   ├── 707.jpg
+│   │   ├── 708.jpg
+│   │   ├── 713.jpg
+│   │   ├── 720.jpg
+│   │   ├── 768.jpg
+│   │   ├── 780.jpg
+│   │   ├── 814.jpg
+│   │   ├── 838.jpg
+│   │   ├── 855.jpg
+│   │   ├── 866.jpg
+│   │   ├── 871.jpg
+│   │   ├── 877.jpg
+│   │   ├── 889.jpg
+│   │   ├── 914.jpg
+│   │   ├── 930.jpg
+│   │   ├── 976.jpg
+│   │   └── 993.jpg
+│   ├── corp
+│   │   ├── 027.jpg
+│   │   ├── 029.jpg
+│   │   ├── 043.jpg
+│   │   ├── 145.jpg
+│   │   ├── 192.jpg
+│   │   ├── 226.jpg
+│   │   ├── 246.jpg
+│   │   ├── 283.jpg
+│   │   ├── 310.jpg
+│   │   ├── 354.jpg
+│   │   ├── 368.jpg
+│   │   ├── 379.jpg
+│   │   ├── 418.jpg
+│   │   ├── 545.jpg
+│   │   ├── 585.jpg
+│   │   ├── 716.jpg
+│   │   ├── 741.jpg
+│   │   ├── 756.jpg
+│   │   ├── 803.jpg
+│   │   ├── 808.jpg
+│   │   ├── 816.jpg
+│   │   ├── 846.jpg
+│   │   ├── 923.jpg
+│   │   ├── 951.jpg
+│   │   └── 962.jpg
+│   ├── food
+│   │   ├── 032.jpg
+│   │   ├── 041.jpg
+│   │   ├── 106.jpg
+│   │   ├── 151.jpg
+│   │   ├── 176.jpg
+│   │   ├── 181.jpg
+│   │   ├── 214.jpg
+│   │   ├── 267.jpg
+│   │   ├── 276.jpg
+│   │   ├── 357.jpg
+│   │   ├── 380.jpg
+│   │   ├── 387.jpg
+│   │   ├── 416.jpg
+│   │   ├── 444.jpg
+│   │   ├── 449.jpg
+│   │   ├── 458.jpg
+│   │   ├── 466.jpg
+│   │   ├── 486.jpg
+│   │   ├── 519.jpg
+│   │   ├── 526.jpg
+│   │   ├── 539.jpg
+│   │   ├── 540.jpg
+│   │   ├── 557.jpg
+│   │   ├── 568.jpg
+│   │   ├── 655.jpg
+│   │   ├── 685.jpg
+│   │   ├── 725.jpg
+│   │   ├── 727.jpg
+│   │   ├── 731.jpg
+│   │   ├── 738.jpg
+│   │   ├── 803.jpg
+│   │   ├── 824.jpg
+│   │   ├── 826.jpg
+│   │   ├── 862.jpg
+│   │   ├── 903.jpg
+│   │   ├── 922.jpg
+│   │   ├── 927.jpg
+│   │   └── 939.jpg
+│   ├── indu
+│   │   ├── 007.jpg
+│   │   ├── 035.jpg
+│   │   ├── 055.jpg
+│   │   ├── 067.jpg
+│   │   ├── 089.jpg
+│   │   ├── 138.jpg
+│   │   ├── 175.jpg
+│   │   ├── 177.jpg
+│   │   ├── 244.jpg
+│   │   ├── 248.jpg
+│   │   ├── 266.jpg
+│   │   ├── 272.jpg
+│   │   ├── 293.jpg
+│   │   ├── 340.jpg
+│   │   ├── 348.jpg
+│   │   ├── 355.jpg
+│   │   ├── 361.jpg
+│   │   ├── 369.jpg
+│   │   ├── 466.jpg
+│   │   ├── 474.jpg
+│   │   ├── 496.jpg
+│   │   ├── 510.jpg
+│   │   ├── 554.jpg
+│   │   ├── 561.jpg
+│   │   ├── 566.jpg
+│   │   ├── 571.jpg
+│   │   ├── 587.jpg
+│   │   ├── 618.jpg
+│   │   ├── 652.jpg
+│   │   ├── 702.jpg
+│   │   ├── 706.jpg
+│   │   ├── 730.jpg
+│   │   ├── 737.jpg
+│   │   ├── 808.jpg
+│   │   ├── 828.jpg
+│   │   ├── 837.jpg
+│   │   ├── 962.jpg
+│   │   ├── 990.jpg
+│   │   └── 993.jpg
+│   ├── me.jpg
+│   └── wdng
+│       ├── 100.jpg
+│       ├── 108.jpg
+│       ├── 136.jpg
+│       ├── 145.jpg
+│       ├── 155.jpg
+│       ├── 169.jpg
+│       ├── 192.jpg
+│       ├── 193.jpg
+│       ├── 202.jpg
+│       ├── 206.jpg
+│       ├── 208.jpg
+│       ├── 222.jpg
+│       ├── 293.jpg
+│       ├── 296.jpg
+│       ├── 333.jpg
+│       ├── 363.jpg
+│       ├── 397.jpg
+│       ├── 421.jpg
+│       ├── 441.jpg
+│       ├── 528.jpg
+│       ├── 529.jpg
+│       ├── 559.jpg
+│       ├── 565.jpg
+│       ├── 592.jpg
+│       ├── 614.jpg
+│       ├── 627.jpg
+│       ├── 642.jpg
+│       ├── 648.jpg
+│       ├── 658.jpg
+│       ├── 663.jpg
+│       ├── 692.jpg
+│       ├── 695.jpg
+│       ├── 698.jpg
+│       ├── 703.jpg
+│       ├── 718.jpg
+│       ├── 737.jpg
+│       ├── 738.jpg
+│       ├── 759.jpg
+│       ├── 766.jpg
+│       ├── 808.jpg
+│       ├── 821.jpg
+│       ├── 822.jpg
+│       ├── 833.jpg
+│       ├── 834.jpg
+│       ├── 896.jpg
+│       ├── 900.jpg
+│       ├── 914.jpg
+│       ├── 915.jpg
+│       ├── 920.jpg
+│       ├── 931.jpg
+│       ├── 950.jpg
+│       ├── 952.jpg
+│       ├── 965.jpg
+│       ├── 966.jpg
+│       └── 976.jpg
+├── src
+│   ├── app
+│   │   ├── favicon.ico
+│   │   ├── gallery.tsx
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components
+│   │   ├── icons.tsx
+│   │   ├── magicui
+│   │   │   ├── blur-fade-text.tsx
+│   │   │   ├── blur-fade.tsx
+│   │   │   └── dock.tsx
+│   │   ├── mdx.tsx
+│   │   ├── mode-toggle.tsx
+│   │   ├── navbar.tsx
+│   │   ├── theme-provider.tsx
+│   │   └── ui
+│   │       ├── avatar.tsx
+│   │       ├── badge.tsx
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── confetti.tsx
+│   │       ├── number-ticker.tsx
+│   │       ├── separator.tsx
+│   │       └── tooltip.tsx
+│   ├── data
+│   │   ├── photos.tsx
+│   │   └── resume.tsx
+│   └── lib
+│       └── utils.ts
+├── tailwind.config.ts
+├── tree.txt
+└── tsconfig.json
+
+80 directories, 262 files
