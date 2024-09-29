@@ -1,0 +1,9 @@
+.git/
+node_modules/
+.pnpm-store/
+.DS_Store
+.rcloneignore
+.eslinrc.json
+.gitignore
+.next
+LICENSE
