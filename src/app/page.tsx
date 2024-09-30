@@ -88,6 +88,7 @@ export default function Page() {
                 {DATA.request_end}
               </p>
             </div>
+            <div className="h-10" />
           </BlurFade>
         </div>
       </section>

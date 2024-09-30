@@ -4,6 +4,7 @@ import BlurFade from '@/components/magicui/blur-fade'
 import { DATA } from '@/data/resume'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+
 import {
   RenderImageContext,
   RenderImageProps,
@@ -11,12 +12,15 @@ import {
 } from 'react-photo-album'
 import { UnstableSSR as SSR } from 'react-photo-album/ssr'
 import 'react-photo-album/rows.css'
+
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
+
 import { shuffledPhotos, aPhoto } from '@/data/photos'
 
 const BLUR_FADE_DELAY = 0.06
 
+// рендер NextJS для альбома
 function renderNextImage(
   { alt = '', title, sizes }: RenderImageProps,
   { photo, width, height }: RenderImageContext
@@ -77,11 +81,11 @@ export default function Gallery() {
         </div>
         {/* --- меню --- */}
         <BlurFade delay={BLUR_FADE_DELAY * 10}>
-          <div className="flex justify-center space-x-4 my-6">
+          <div className="flex justify-center space-x-4 my-6 flex-wrap">
             {Object.keys(shuffledPhotos).map(albumName => (
               <button
                 key={albumName}
-                className={`px-4 py-2 rounded-md hover:bg-opacity-80 transition-colors fade-transition ${
+                className={`mb-4 px-4 py-2 rounded-md hover:bg-opacity-80 transition-colors fade-transition ${
                   photoState === albumName
                     ? 'bg-foreground text-background'
                     : 'bg-background text-foreground border border-foreground'
@@ -95,42 +99,39 @@ export default function Gallery() {
         </BlurFade>
         {/* IMPORTANT: --- галерея --- */}
         <BlurFade delay={BLUR_FADE_DELAY * 14}>
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : (
-            // 256 – размер тамбнейлов
-            <SSR breakpoints={[256, 384, 1024, 1920]}>
-              <RowsPhotoAlbum
-                componentsProps={containerWidth => ({
-                  image: {
-                    loading: (containerWidth || 0) > 600 ? 'eager' : 'lazy',
+          {/* // 256 – размер тамбнейлов */}
+          <SSR breakpoints={[300, 600, 900, 1200]}>
+            <RowsPhotoAlbum
+              photos={currentPhotoAlbum}
+              render={{ image: renderNextImage }}
+              onClick={({ index }) => setIndex(index)}
+              defaultContainerWidth={1200}
+              sizes={{
+                size: '1168px',
+                sizes: [
+                  {
+                    viewport: '(max-width: 1200px)',
+                    size: 'calc(100vw - 32px)',
                   },
-                })}
-                photos={currentPhotoAlbum}
-                render={{ image: renderNextImage }}
-                defaultContainerWidth={1200}
-                onClick={({ index }) => setIndex(index)}
-                sizes={{
-                  // мудацкий тейлскейл
-                  size: '1200px',
-                  sizes: [
-                    {
-                      viewport: '(max-width: 1200px)',
-                      size: 'calc(100vw - 32px)',
-                    },
-                  ],
-                }}
-              />
-            </SSR>
-          )}
+                ],
+              }}
+            />
+          </SSR>
         </BlurFade>
         {/* --- лайтбокс --- */}
-        <Lightbox
-          slides={currentPhotoAlbum}
-          open={index >= 0}
-          index={index}
-          close={() => setIndex(-1)}
-        />
+        <BlurFade delay={BLUR_FADE_DELAY * 14}>
+          <Lightbox
+            slides={currentPhotoAlbum}
+            open={index >= 0}
+            index={index}
+            controller={{
+              closeOnPullDown: true,
+              closeOnPullUp: true,
+              closeOnBackdropClick: true,
+            }}
+            close={() => setIndex(-1)}
+          />
+        </BlurFade>
       </section>
     </div>
   )
