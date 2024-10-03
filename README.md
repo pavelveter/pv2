@@ -46,6 +46,16 @@ pnpm dev
 
 4. Open http://localhost:3000 to view the site locally.
 
+## Scripts
+
+### `jpg_2000px_1mb.py`
+
+This script is designed to resize JPG/JPEG photos. It goes through all the files in the specified directory, changing their sizes so that the width or height does not exceed 2000 pixels. If the image already meets these requirements, it is left unchanged. Additionally, the script compresses the images so that their size does not exceed 1 MB. The `Pillow` library and the `jpegoptim` utility are required for operation.
+
+### `make_array.sh`
+
+This script generates information about photos for use in the `photos.tsx` file. It extracts image dimensions using the `exiftool` utility and collects data about the original images and their reduced versions. If the photo has reduced copies (for example, with dimensions `*_200x300`), they are added to the `srcSet` array. The data is formed as objects with the fields `src`, `width`, `height` and `srcSet`, which are used in the `photos.tsx` component.
+
 ## License
 
 This project is licensed under the MIT License.

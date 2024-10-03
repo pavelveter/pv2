@@ -28,27 +28,36 @@ get_image_dimensions() {
     echo "width: $width, height: $height"
 }
 
+# Проход по всем файлам JPG в директории
 for jpg in $(find "${dir}" -type f ! -name "*_*" | sort); do
     dimensions=$(get_image_dimensions "${jpg}")
     
     # Проверяем успешность получения размеров
     if [[ $? -eq 0 ]]; then
-        echo "{src: \"/${jpg}\", $dimensions,"
+        orig="{src: \"/${jpg}\", $dimensions"
 
         # Извлекаем имя файла без расширения
         base_name=$(basename "${jpg}" .jpg)
         
-        # Ищем уменьшенные копии
-        echo "srcSet: ["
-        first=1  # Флаг для форматирования вывода
-        for thumbs in $(find "${dir}" -type f -name "${base_name}_*x*" | sort); do
-            # Извлекаем ширину и высоту из имени файла
-            thumb_dimensions=$(get_image_dimensions "${thumbs}")
-            
-            # Выводим данные для уменьшенной копии
-            echo "{src: \"/${thumbs}\", $thumb_dimensions},"
-        done
-        echo "],"
-        echo "},"
+        # Поиск уменьшенных копий
+        thumb_files=$(find "${dir}" -type f -name "${base_name}_*x*" | sort)
+        
+        # Проверка наличия уменьшенных копий
+        if [[ -n "$thumb_files" ]]; then
+            # Выводим оригинал
+            echo "${orig},"
+            echo "srcSet: ["
+            for thumbs in $thumb_files; do
+                # Извлекаем размеры уменьшенной копии
+                thumb_dimensions=$(get_image_dimensions "${thumbs}")
+                
+                # Вывод данных для уменьшенной копии
+                echo "{src: \"/${thumbs}\", $thumb_dimensions},"
+            done
+            echo "],},"
+        else
+            echo "${orig}},"
+        fi
+        
     fi
 done
