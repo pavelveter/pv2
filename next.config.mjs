@@ -16,6 +16,15 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  async redirects() {
+    return [
+      {
+        source: '/x/:path*',
+        destination: 'https://cloud.mail.ru/public/:path*',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig

@@ -1,9 +1,0 @@
-{
-  "rewrites": [
-    {
-      "source": "/x/(.*)",
-      "destination": "https://cloud.mail.ru/public/$1",
-      "permanent": true
-    }
-  ]
-}
