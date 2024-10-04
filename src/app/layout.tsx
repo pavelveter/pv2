@@ -7,6 +7,7 @@ import type { Metadata } from 'next'
 import { Commissioner as FontSans } from 'next/font/google'
 import './globals.css'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Analytics } from '@vercel/analytics/react'
 
 const fontSans = FontSans({
   subsets: ['cyrillic'],
@@ -65,8 +66,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="dark">
           <TooltipProvider delayDuration={0}>
             {children}
-            <SpeedInsights />
             <Navbar />
+            <SpeedInsights />
+            <Analytics />
           </TooltipProvider>
         </ThemeProvider>
       </body>
