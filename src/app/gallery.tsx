@@ -10,7 +10,7 @@ import {
   RenderImageProps,
   RowsPhotoAlbum,
 } from 'react-photo-album'
-
+import { UnstableSSR as SSR } from 'react-photo-album/ssr'
 import 'react-photo-album/rows.css'
 
 import Lightbox from 'yet-another-react-lightbox'
@@ -100,12 +100,14 @@ export default function Gallery() {
         {/* IMPORTANT: --- галерея --- */}
         <BlurFade delay={BLUR_FADE_DELAY * 14}>
           {/* // 256 – размер тамбнейлов */}
-          <RowsPhotoAlbum
-            photos={currentPhotoAlbum}
-            render={{ image: renderNextImage }}
-            onClick={({ index }) => setIndex(index)}
-            defaultContainerWidth={624}
-          />
+          <SSR breakpoints={[300, 600, 900, 1200]}>
+            <RowsPhotoAlbum
+              photos={currentPhotoAlbum}
+              render={{ image: renderNextImage }}
+              onClick={({ index }) => setIndex(index)}
+              defaultContainerWidth={624}
+            />
+          </SSR>
         </BlurFade>
         {/* --- лайтбокс --- */}
         <BlurFade delay={BLUR_FADE_DELAY * 14}>
