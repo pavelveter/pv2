@@ -16,7 +16,6 @@ export default function Page() {
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       {/* --- герой --- */}
       <section id="hero">
-        <div className="absolute inset-0 w-full h-full z-0 bg-gradient-to-r from-[#ff7e5f] via-[#feb47b] to-[#ff6b6b] clip-wavy"></div>
         <div className="mx-auto w-full max-w-2xl space-y-8">
           <div className="gap-2 flex justify-between">
             <div className="flex-col flex flex-1 space-y-1.5">
