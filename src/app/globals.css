@@ -146,3 +146,7 @@ code[data-line-numbers-max-digits='3'] > [data-line]::before {
 .fade-transition {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
+
+.clip-wavy {
+  clip-path: polygon(0 0, 100% 0, 45% 25%, 0% 20%, 0% 40%);
+}
