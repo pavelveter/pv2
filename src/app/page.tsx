@@ -1,5 +1,7 @@
 'use client'
 
+import React, { useEffect, useState } from 'react'
+
 import BlurFade from '@/components/magicui/blur-fade'
 import BlurFadeText from '@/components/magicui/blur-fade-text'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -12,6 +14,23 @@ import Gallery from './gallery'
 const BLUR_FADE_DELAY = 0.04
 
 export default function Page() {
+  const [section, setSection] = useState<string | undefined>()
+
+  useEffect(() => {
+    // Функция для обновления секции на основе хеша URL
+    const updateSectionFromHash = () => {
+      const hash = window.location.hash.slice(1) // Убираем '#'
+      setSection(hash || '0') // Используем '0' или значение хеша
+    }
+
+    // Обновляем раздел при первом рендере
+    updateSectionFromHash()
+    // Слушаем изменения в URL
+    window.addEventListener('hashchange', updateSectionFromHash)
+
+    // Чистим слушатель при размонтировании компонента
+    return () => window.removeEventListener('hashchange', updateSectionFromHash)
+  }, [])
   return (
     <main className="flex flex-col min-h-[100dvh] space-y-10">
       {/* --- герой --- */}
@@ -49,7 +68,7 @@ export default function Page() {
         </BlurFade>
       </section>
       {/* --- фотки ---*/}
-      <Gallery />
+      <Gallery section={section} />
       {/* --- кто учил --- */}
       <section id="who">
         <BlurFade delay={BLUR_FADE_DELAY * 20}>

@@ -45,7 +45,7 @@ function renderNextImage(
   )
 }
 
-export default function Gallery() {
+export default function Gallery({ section }) {
   const [index, setIndex] = useState(-1)
   const [photoState, setPhotoState] = useState(Object.keys(shuffledPhotos)[0])
   const [isLoading, setIsLoading] = useState(true)
