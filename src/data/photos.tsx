@@ -199,7 +199,6 @@ const originalPhotos: PhotoAlbum = {
     { src: '/prtr/265.jpg', width: 2000, height: 1333 },
     { src: '/prtr/280.jpg', width: 960, height: 960 },
     { src: '/prtr/295.jpg', width: 1333, height: 2000 },
-    { src: '/prtr/310.jpg', width: 1333, height: 2000 },
     { src: '/prtr/325.jpg', width: 1333, height: 2000 },
     { src: '/prtr/340.jpg', width: 2000, height: 1333 },
     { src: '/prtr/355.jpg', width: 1333, height: 2000 },
