@@ -2,6 +2,7 @@ import { Icons } from '@/components/icons'
 import { HomeIcon, NotebookIcon } from 'lucide-react'
 
 export const DATA = {
+  yandexCounterId: 99023814,
   name: 'Павел Ветер',
   initials: 'ПВ',
   url: 'https://pavelveter.com',
